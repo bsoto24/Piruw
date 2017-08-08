@@ -15,6 +15,7 @@ import com.codelab.piruw.data.entity.PreguntaTO;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class CardPagerAdapter extends PagerAdapter implements CardAdapter {
 
@@ -74,7 +75,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter {
         mViews.set(position, null);
     }
 
-    private void bind(PreguntaTO item, View view) {
+    private void bind(final PreguntaTO item, View view) {
 
         TextView tv_pregunta = (TextView) view.findViewById(R.id.tv_pregunta);
         ImageView img_pregunta = (ImageView) view.findViewById(R.id.img_pregunta);
@@ -84,18 +85,36 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter {
         final Button btn_alt3 = (Button) view.findViewById(R.id.btn_alt_3);
         final Button btn_alt4 = (Button) view.findViewById(R.id.btn_alt_4);
 
+        Button[] alternativas = new Button[4];
+        alternativas[0] = btn_alt1;
+        alternativas[1] = btn_alt2;
+        alternativas[2] = btn_alt3;
+        alternativas[3] = btn_alt4;
+
         tv_pregunta.setText(item.getPregunta());
         img_pregunta.setImageResource(item.getImagen());
 
-        btn_alt1.setText(item.getAlt1());
-        btn_alt2.setText(item.getAlt2());
-        btn_alt3.setText(item.getAlt3());
-        btn_alt4.setText(item.getAlt4());
+        if(!item.isMezcla()){
+            item.setMezcla(true);
+            mezclarAternativas(item);
+        }
 
+        if (!item.getRespuesta().equals("")){
+            for (int i = 0; i < 4; i++) {
+                if (item.getAlternativas()[i].equals(item.getRespuesta())){
+                    alternativas[i].getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.colorAccent), PorterDuff.Mode.MULTIPLY);
+                }
+            }
+        }
+
+        for (int i = 0; i < 4; i++) {
+            alternativas[i].setText(item.getAlternativas()[i]);
+        }
 
         btn_alt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                item.setRespuesta(item.getAlternativas()[0]);
                 btn_alt1.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.colorAccent), PorterDuff.Mode.MULTIPLY);
                 btn_alt2.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.normal), PorterDuff.Mode.MULTIPLY);
                 btn_alt3.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.normal), PorterDuff.Mode.MULTIPLY);
@@ -106,6 +125,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter {
         btn_alt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                item.setRespuesta(item.getAlternativas()[1]);
                 btn_alt2.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.colorAccent), PorterDuff.Mode.MULTIPLY);
                 btn_alt1.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.normal), PorterDuff.Mode.MULTIPLY);
                 btn_alt3.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.normal), PorterDuff.Mode.MULTIPLY);
@@ -116,6 +136,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter {
         btn_alt3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                item.setRespuesta(item.getAlternativas()[2]);
                 btn_alt3.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.colorAccent), PorterDuff.Mode.MULTIPLY);
                 btn_alt1.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.normal), PorterDuff.Mode.MULTIPLY);
                 btn_alt2.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.normal), PorterDuff.Mode.MULTIPLY);
@@ -126,6 +147,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter {
         btn_alt4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                item.setRespuesta(item.getAlternativas()[3]);
                 btn_alt4.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.colorAccent), PorterDuff.Mode.MULTIPLY);
                 btn_alt1.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.normal), PorterDuff.Mode.MULTIPLY);
                 btn_alt2.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.normal), PorterDuff.Mode.MULTIPLY);
@@ -133,6 +155,18 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter {
             }
         });
 
+    }
+
+    private void mezclarAternativas(PreguntaTO item) {
+        int index;
+        String temp;
+        Random random = new Random();
+        for (int i = item.getAlternativas().length - 1; i > 0; i--) {
+            index = random.nextInt(i + 1);
+            temp = item.getAlternativas()[index];
+            item.getAlternativas()[index] = item.getAlternativas()[i];
+            item.getAlternativas()[i] = temp;
+        }
     }
 
 }

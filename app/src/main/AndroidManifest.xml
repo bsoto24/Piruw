@@ -22,7 +22,8 @@
         <activity
             android:name=".presenter.activity.MainActivity"
             android:label="@string/title_activity_quiz" />
-        <activity android:name=".presenter.activity.QuizActivity"></activity>
+        <activity android:name=".presenter.activity.QuizActivity" />
+        <activity android:name=".presenter.activity.ResultadoActivity"></activity>
     </application>
 
 </manifest>
