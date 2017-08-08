@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/img_pregunta"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            android:scaleType="centerCrop"
+            android:src="@drawable/republica" />
+
+        <com.codelab.piruw.widget.TextViewKG
+            android:id="@+id/tv_pregunta"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Año en el que se declara la independencia del Perú"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="2.5"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.codelab.piruw.widget.ButtonKG
+                android:id="@+id/btn_alt_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/normal"
+                android:text="1551"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+
+            <com.codelab.piruw.widget.ButtonKG
+                android:id="@+id/btn_alt_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/normal"
+                android:text="1492"
+                android:textAllCaps="false"
+
+                android:textColor="@color/white" />
+
+            <com.codelab.piruw.widget.ButtonKG
+                android:id="@+id/btn_alt_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/normal"
+                android:text="1521"
+                android:textAllCaps="false"
+
+                android:textColor="@color/white" />
+
+            <com.codelab.piruw.widget.ButtonKG
+                android:id="@+id/btn_alt_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/normal"
+                android:text="1490"
+                android:textAllCaps="false"
+
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

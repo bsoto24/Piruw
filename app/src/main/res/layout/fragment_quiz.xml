@@ -25,6 +25,7 @@
         app:layout_constraintHorizontal_bias="0.475" />
 
     <com.codelab.piruw.widget.ButtonKG
+        android:id="@+id/btn_iniciar"
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:background="@drawable/selector_button"

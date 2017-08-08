@@ -8,46 +8,7 @@
     android:orientation="vertical"
     tools:context="com.codelab.piruw.presenter.activity.MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <com.codelab.piruw.widget.TextViewKG
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="PIRUW"
-            android:textColor="@color/black"
-            android:textSize="40sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="135dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="2dp"
-                android:layout_weight="1"
-                android:background="@color/colorPrimary" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="2dp"
-                android:layout_weight="1"
-                android:background="@color/white" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="2dp"
-                android:layout_weight="1"
-                android:background="@color/colorPrimary" />
-
-        </LinearLayout>
-    </LinearLayout>
+    <include layout="@layout/toolbar"/>
 
     <FrameLayout
         android:id="@+id/content"
