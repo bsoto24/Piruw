@@ -5,8 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/toolbar"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -20,7 +18,7 @@
             android:layout_gravity="center"
             android:clipToPadding="false"
             android:overScrollMode="never"
-            android:paddingBottom="30dp"
+            android:paddingBottom="30dp"            android:paddingTop="30dp"
             android:paddingEnd="@dimen/card_padding"
             android:paddingLeft="@dimen/card_padding"
             android:paddingRight="@dimen/card_padding"
@@ -31,13 +29,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="center_horizontal">
+        android:gravity="center">
 
         <com.codelab.piruw.widget.ButtonKG
             android:id="@+id/btn_next"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:text="FINALIZAR"
+            android:text="Terminé"
+            android:textAllCaps="false"
             android:padding="5dp"
             android:textSize="18sp"
             android:backgroundTint="@color/colorPrimary"

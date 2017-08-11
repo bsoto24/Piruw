@@ -14,6 +14,7 @@ public class PreguntaTO implements Serializable{
     private String pregunta;
     private String[] alternativas;
     private String respuesta;
+    private int putaje;
     private String correcta;
     private int imagen;
     private boolean mezcla = false;
@@ -23,6 +24,7 @@ public class PreguntaTO implements Serializable{
         this.imagen = imagen;
         this.alternativas = new String[4];
         this.correcta = alt1;
+        this.putaje = 0;
         this.respuesta = "";
         this.alternativas[0] = alt1;
         this.alternativas[1] = alt2;
@@ -76,5 +78,13 @@ public class PreguntaTO implements Serializable{
 
     public void setMezcla(boolean mezcla) {
         this.mezcla = mezcla;
+    }
+
+    public int getPutaje() {
+        return putaje;
+    }
+
+    public void setPutaje(int putaje) {
+        this.putaje = putaje;
     }
 }

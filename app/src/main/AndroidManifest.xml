@@ -21,9 +21,16 @@
         </activity>
         <activity
             android:name=".presenter.activity.MainActivity"
-            android:label="@string/title_activity_quiz" />
-        <activity android:name=".presenter.activity.QuizActivity" />
-        <activity android:name=".presenter.activity.ResultadoActivity"></activity>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presenter.activity.QuizActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presenter.activity.ResultadoActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name=".presenter.activity.SolucionarioActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
     </application>
 
 </manifest>

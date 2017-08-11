@@ -28,15 +28,29 @@ public class ResultadoAdapter extends RecyclerView.Adapter<ResultadoAdapter.Resu
 
     @Override
     public ResultadoHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ResultadoHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_resultado, parent, false));    }
+        return new ResultadoHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_solucion, parent, false));
+    }
 
     @Override
     public void onBindViewHolder(ResultadoHolder holder, int position) {
 
         PreguntaTO preguntaTO = preguntas.get(position);
 
+        holder.pregunta.setText(preguntaTO.getPregunta());
         holder.respuesta.setText(preguntaTO.getRespuesta());
         holder.correcta.setText(preguntaTO.getCorrecta());
+
+        switch (preguntaTO.getPutaje()) {
+            case 0:
+                holder.etiqueta.setBackgroundColor(context.getResources().getColor(R.color.normal));
+                break;
+            case 1:
+                holder.etiqueta.setBackgroundColor(context.getResources().getColor(R.color.correct));
+                break;
+            case -1:
+                holder.etiqueta.setBackgroundColor(context.getResources().getColor(R.color.incorrect));
+                break;
+        }
 
     }
 
@@ -45,15 +59,19 @@ public class ResultadoAdapter extends RecyclerView.Adapter<ResultadoAdapter.Resu
         return preguntas.size();
     }
 
-    public class ResultadoHolder extends RecyclerView.ViewHolder{
+    public class ResultadoHolder extends RecyclerView.ViewHolder {
 
-        TextView respuesta, correcta;
+        TextView respuesta, correcta, pregunta;
+        View etiqueta;
 
         public ResultadoHolder(View itemView) {
             super(itemView);
 
+            pregunta = (TextView) itemView.findViewById(R.id.tv_pregunta);
             respuesta = (TextView) itemView.findViewById(R.id.tv_respuesta);
             correcta = (TextView) itemView.findViewById(R.id.tv_correcta);
+
+            etiqueta = (View) itemView.findViewById(R.id.etiqueta);
         }
     }
 }
