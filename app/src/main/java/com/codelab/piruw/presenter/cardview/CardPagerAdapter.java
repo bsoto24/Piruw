@@ -78,7 +78,6 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter {
     private void bind(final PreguntaTO item, View view) {
 
         TextView tv_pregunta = (TextView) view.findViewById(R.id.tv_pregunta);
-        ImageView img_pregunta = (ImageView) view.findViewById(R.id.img_pregunta);
 
         final Button btn_alt1 = (Button) view.findViewById(R.id.btn_alt_1);
         final Button btn_alt2 = (Button) view.findViewById(R.id.btn_alt_2);
@@ -92,7 +91,6 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter {
         alternativas[3] = btn_alt4;
 
         tv_pregunta.setText(item.getPregunta());
-        img_pregunta.setImageResource(item.getImagen());
 
         if(!item.isMezcla()){
             item.setMezcla(true);
@@ -102,7 +100,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter {
         if (!item.getRespuesta().equals("")){
             for (int i = 0; i < 4; i++) {
                 if (item.getAlternativas()[i].equals(item.getRespuesta())){
-                    alternativas[i].getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.colorAccent), PorterDuff.Mode.MULTIPLY);
+                    alternativas[i].getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.selected), PorterDuff.Mode.MULTIPLY);
                 }
             }
         }
@@ -115,7 +113,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter {
             @Override
             public void onClick(View view) {
                 item.setRespuesta(item.getAlternativas()[0]);
-                btn_alt1.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.colorAccent), PorterDuff.Mode.MULTIPLY);
+                btn_alt1.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.selected), PorterDuff.Mode.MULTIPLY);
                 btn_alt2.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.normal), PorterDuff.Mode.MULTIPLY);
                 btn_alt3.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.normal), PorterDuff.Mode.MULTIPLY);
                 btn_alt4.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.normal), PorterDuff.Mode.MULTIPLY);
@@ -126,7 +124,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter {
             @Override
             public void onClick(View view) {
                 item.setRespuesta(item.getAlternativas()[1]);
-                btn_alt2.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.colorAccent), PorterDuff.Mode.MULTIPLY);
+                btn_alt2.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.selected), PorterDuff.Mode.MULTIPLY);
                 btn_alt1.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.normal), PorterDuff.Mode.MULTIPLY);
                 btn_alt3.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.normal), PorterDuff.Mode.MULTIPLY);
                 btn_alt4.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.normal), PorterDuff.Mode.MULTIPLY);
@@ -137,7 +135,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter {
             @Override
             public void onClick(View view) {
                 item.setRespuesta(item.getAlternativas()[2]);
-                btn_alt3.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.colorAccent), PorterDuff.Mode.MULTIPLY);
+                btn_alt3.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.selected), PorterDuff.Mode.MULTIPLY);
                 btn_alt1.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.normal), PorterDuff.Mode.MULTIPLY);
                 btn_alt2.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.normal), PorterDuff.Mode.MULTIPLY);
                 btn_alt4.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.normal), PorterDuff.Mode.MULTIPLY);
@@ -148,7 +146,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter {
             @Override
             public void onClick(View view) {
                 item.setRespuesta(item.getAlternativas()[3]);
-                btn_alt4.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.colorAccent), PorterDuff.Mode.MULTIPLY);
+                btn_alt4.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.selected), PorterDuff.Mode.MULTIPLY);
                 btn_alt1.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.normal), PorterDuff.Mode.MULTIPLY);
                 btn_alt2.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.normal), PorterDuff.Mode.MULTIPLY);
                 btn_alt3.getBackground().setColorFilter(view.getContext().getResources().getColor(R.color.normal), PorterDuff.Mode.MULTIPLY);

@@ -2,12 +2,14 @@ package com.codelab.piruw.presenter.activity;
 
 import android.content.Intent;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.codelab.piruw.R;
+import com.codelab.piruw.data.database.SQliteManager;
 import com.codelab.piruw.data.entity.PreguntaTO;
 import com.codelab.piruw.presenter.cardview.CardPagerAdapter;
 import com.codelab.piruw.presenter.cardview.ShadowTransformer;
@@ -21,6 +23,7 @@ public class QuizActivity extends AppCompatActivity {
     private ShadowTransformer mCardShadowTransformer;
     private Button btnNext;
     private ArrayList<PreguntaTO> preguntas;
+    private SQliteManager db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +35,9 @@ public class QuizActivity extends AppCompatActivity {
 
         mCardAdapter = new CardPagerAdapter();
 
-        preguntas = new ArrayList<>();
+        db = new SQliteManager(this);
 
-        preguntas.add(new PreguntaTO("Mitológicamente fundó el Tahuantinsuyo", "Manco Capac", "Inca Roca", "Atahualpa", "Pachacutec", R.drawable.inca));
-        preguntas.add(new PreguntaTO("Año en el que se declaró la independencia del Perú", "1551", "1892", "1888", "1821", R.drawable.republica));
-        preguntas.add(new PreguntaTO("Ultimo virrey del Perú", "José Fernando de Abascal", "Jose de la Serna", "Joaquin de la Pezuela", "Blasco Nuñez de Vela", R.drawable.colonia));
-        preguntas.add(new PreguntaTO("Mitológicamente fundó el Tahuantinsuyo", "Manco Capac", "Inca Roca", "Atahualpa", "Pachacutec", R.drawable.inca2));
-        preguntas.add(new PreguntaTO("Año en el que se declaró la independencia del Perú", "1551", "1892", "1888", "1821", R.drawable.republica));
-        preguntas.add(new PreguntaTO("Último virrey del Perú", "José Fernando de Abascal", "Jose de la Serna", "Joaquin de la Pezuela", "Blasco Nuñez de Vela", R.drawable.colonia2));
-
+        preguntas = db.getPreguntas();
 
         for (PreguntaTO p : preguntas){
             mCardAdapter.addCardItem(p);
@@ -61,6 +58,35 @@ public class QuizActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        View view = getLayoutInflater().inflate(R.layout.dialog_back, null);
+        Button btnSi = view.findViewById(R.id.btn_si);
+        Button btnNo = view.findViewById(R.id.btn_no);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(view);
+        final AlertDialog alert = builder.create();
+        alert.setCancelable(false);
+        alert.show();
+
+        btnSi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
+
+        btnNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alert.dismiss();
             }
         });
 

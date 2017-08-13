@@ -57,7 +57,6 @@ public class QuizFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), QuizActivity.class);
                 startActivity(intent);
                 getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                getActivity().finish();
             }
         });
     }

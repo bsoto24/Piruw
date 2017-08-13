@@ -1,6 +1,7 @@
 package com.codelab.piruw.presenter.activity;
 
 import android.content.res.Configuration;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,7 +14,6 @@ import com.codelab.piruw.presenter.adapter.ResultadoAdapter;
 import java.util.ArrayList;
 
 public class SolucionarioActivity extends AppCompatActivity {
-
 
     private RecyclerView rvResultados;
     private ResultadoAdapter adapter;
@@ -42,5 +42,10 @@ public class SolucionarioActivity extends AppCompatActivity {
             finish();
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Snackbar.make(this.findViewById(R.id.container), "Gire el dispositivo", Snackbar.LENGTH_SHORT).show();
     }
 }

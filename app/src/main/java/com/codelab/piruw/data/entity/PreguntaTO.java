@@ -11,17 +11,17 @@ import java.util.ArrayList;
 
 public class PreguntaTO implements Serializable{
 
+    private int id;
     private String pregunta;
     private String[] alternativas;
     private String respuesta;
     private int putaje;
     private String correcta;
-    private int imagen;
     private boolean mezcla = false;
 
-    public PreguntaTO(String pregunta, String alt1, String alt2, String alt3, String alt4, int imagen) {
+    public PreguntaTO(int id, String pregunta, String alt1, String alt2, String alt3, String alt4) {
+        this.id = id;
         this.pregunta = pregunta;
-        this.imagen = imagen;
         this.alternativas = new String[4];
         this.correcta = alt1;
         this.putaje = 0;
@@ -32,20 +32,20 @@ public class PreguntaTO implements Serializable{
         this.alternativas[3] = alt4;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getPregunta() {
         return pregunta;
     }
 
     public void setPregunta(String pregunta) {
         this.pregunta = pregunta;
-    }
-
-    public int getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(int imagen) {
-        this.imagen = imagen;
     }
 
     public String getRespuesta() {

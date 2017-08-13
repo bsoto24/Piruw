@@ -14,12 +14,13 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:id="@+id/textViewKG5" />
+        android:id="@+id/textViewKG5"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <LinearLayout
         android:layout_width="0dp"

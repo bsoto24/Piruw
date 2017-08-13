@@ -1,9 +1,13 @@
 package com.codelab.piruw.presenter.activity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +26,7 @@ public class ResultadoActivity extends AppCompatActivity {
 
     private ArrayList<PreguntaTO> preguntas;
 
+    private Button btnNext;
     private PieChartView pieChart;
     private PieChartData data;
     private boolean hasLabels = false;
@@ -39,6 +44,16 @@ public class ResultadoActivity extends AppCompatActivity {
         tvCorrecta = (TextView) findViewById(R.id.tv_correcta);
         tvIncorrecta= (TextView) findViewById(R.id.tv_incorrecta);
         tvNoRespondida = (TextView) findViewById(R.id.tv_no_respondida);
+
+        btnNext = (Button) findViewById(R.id.btn_next);
+
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
 
         preguntas = (ArrayList<PreguntaTO>) getIntent().getSerializableExtra("preguntas");
 
@@ -89,7 +104,7 @@ public class ResultadoActivity extends AppCompatActivity {
 
         @Override
         public void onValueSelected(int arcIndex, SliceValue value) {
-            Toast.makeText(ResultadoActivity.this, value.getValue() + " %", Toast.LENGTH_SHORT).show();
+
         }
 
         @Override
@@ -143,4 +158,5 @@ public class ResultadoActivity extends AppCompatActivity {
         }
 
     }
+
 }
